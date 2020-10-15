@@ -1,0 +1,6 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+#mainAncPane {
+    -fx-background-color:  linear-gradient(#FFA500,#FFFAF0, #FFFFFF );
+        
+}

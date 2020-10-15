@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="loginAncPane" prefHeight="785.0" prefWidth="986.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+   <children>
+      <ImageView fitHeight="371.0" fitWidth="994.0" layoutX="-4.0">
+         <image>
+            <Image url="@../images/mmdm2.jpg" />
+         </image>
+         <effect>
+            <Reflection />
+         </effect>
+      </ImageView>
+      <Pane layoutY="371.0" prefHeight="415.0" prefWidth="379.0">
+         <children>
+            <TextField fx:id="txtUsername" layoutX="36.0" layoutY="69.0" prefHeight="44.0" prefWidth="303.0" promptText="Username">
+               <font>
+                  <Font name="MV Boli" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TextField>
+            <Label layoutX="36.0" layoutY="14.0" prefHeight="37.0" prefWidth="312.0" text="Enter your username and password">
+               <font>
+                  <Font name="MV Boli" size="18.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </Label>
+            <Button fx:id="btnLogin" layoutX="36.0" layoutY="208.0" mnemonicParsing="false" onAction="#login" prefHeight="44.0" prefWidth="303.0" text="Login">
+               <font>
+                  <Font name="MV Boli" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Button fx:id="btnCreateNewUser" layoutX="36.0" layoutY="271.0" mnemonicParsing="false" onAction="#CNUPaneControl" prefHeight="44.0" prefWidth="303.0" text="Create new user">
+               <font>
+                  <Font name="MV Boli" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <PasswordField fx:id="txtPassword" layoutX="36.0" layoutY="141.0" prefHeight="44.0" prefWidth="303.0" promptText="Password">
+               <font>
+                  <Font name="MV Boli" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </PasswordField>
+            <Label fx:id="lblLoginError" alignment="CENTER" layoutX="27.0" layoutY="331.0" prefHeight="17.0" prefWidth="312.0" text="Incorrect username or password" textFill="#ff004d" visible="false">
+               <font>
+                  <Font name="MV Boli" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="CNUPane" layoutX="364.0" layoutY="378.0" prefHeight="371.0" prefWidth="622.0" visible="false">
+         <children>
+            <Button fx:id="btnCreateUserCNU" layoutX="140.0" layoutY="263.0" mnemonicParsing="false" onAction="#CNUPaneControl" prefHeight="44.0" prefWidth="204.0" text="Create user">
+               <font>
+                  <Font name="MV Boli" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow color="RED" />
+               </effect>
+            </Button>
+            <PasswordField fx:id="txtPwCNU" layoutX="41.0" layoutY="126.0" prefHeight="44.0" prefWidth="303.0" promptText="Password">
+               <font>
+                  <Font name="MV Boli" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow color="RED" />
+               </effect>
+            </PasswordField>
+            <PasswordField fx:id="txtPw2CNU" layoutX="41.0" layoutY="195.0" prefHeight="44.0" prefWidth="303.0" promptText="Confirm password">
+               <font>
+                  <Font name="MV Boli" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow color="#e80000" />
+               </effect>
+            </PasswordField>
+            <TextField fx:id="txtUsernameCNU" layoutX="41.0" layoutY="60.0" prefHeight="44.0" prefWidth="303.0" promptText="Username">
+               <font>
+                  <Font name="MV Boli" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow color="RED" />
+               </effect>
+            </TextField>
+            <Button fx:id="btnCancelCNU" layoutX="41.0" layoutY="263.0" mnemonicParsing="false" onAction="#CNUPaneControl" prefHeight="44.0" prefWidth="88.0" text="&lt;Cancel">
+               <font>
+                  <Font name="MV Boli" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow color="RED" />
+               </effect>
+            </Button>
+            <Label layoutX="7.0" layoutY="161.0" text="&gt;">
+               <font>
+                  <Font name="MV Boli" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="98.0" layoutY="9.0" prefHeight="37.0" prefWidth="189.0" text="Creating a new user">
+               <font>
+                  <Font name="MV Boli" size="18.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </Label>
+            <Label fx:id="errUsername" layoutX="374.0" layoutY="66.0" prefHeight="32.0" prefWidth="230.0" text="Username already exists" textFill="#e11616" visible="false">
+               <font>
+                  <Font name="MV Boli" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="errPW" layoutX="374.0" layoutY="132.0" prefHeight="32.0" prefWidth="230.0" text="Passwords do not match" textFill="#e11616" visible="false">
+               <font>
+                  <Font name="MV Boli" size="18.0" />
+               </font>
+            </Label>
+         </children>
+         <effect>
+            <Blend />
+         </effect>
+      </Pane>
+      <Label layoutX="28.0" layoutY="14.0" prefHeight="135.0" prefWidth="361.0" text="MemoDemo">
+         <font>
+            <Font name="Georgia Italic" size="62.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
