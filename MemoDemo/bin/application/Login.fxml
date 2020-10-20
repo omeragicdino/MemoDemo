@@ -127,7 +127,7 @@
                   <Blend />
                </effect>
             </Label>
-            <Label fx:id="errUsername" layoutX="374.0" layoutY="66.0" prefHeight="32.0" prefWidth="230.0" text="Username already exists" textFill="#e11616" visible="false">
+            <Label fx:id="errUsername" layoutX="378.0" layoutY="51.0" prefHeight="63.0" prefWidth="230.0" text="Username already exists&#10;or is not valid!" textFill="#e11616" visible="false">
                <font>
                   <Font name="MV Boli" size="18.0" />
                </font>

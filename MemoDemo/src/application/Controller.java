@@ -56,7 +56,7 @@ public class Controller {
 	@FXML
 	private TextField txtMonth;
 	@FXML
-	private TextArea ta;
+	private TextArea taDescription;
 	@FXML
 	private Button btnAddTask;
 	@FXML
@@ -74,7 +74,7 @@ public class Controller {
 	@FXML
 	private Button btnDeleteTask;
 	@FXML
-	private Label lbDescription;
+	private Label lblDescription;
 	@FXML
 	private RadioButton rbDueDate;
 	@FXML
@@ -132,7 +132,7 @@ public class Controller {
         	boolean UsernameCheck = true;
         		
         		while (rs.next()) {
-        			if(username.equals(rs.getString("Username"))) {
+        			if(username.equals(rs.getString("Username")) || username.equals("") ) {
         				errUsername.setVisible(true);
         				UsernameCheck=false;
         				break;
@@ -171,32 +171,32 @@ public class Controller {
         } else if (event.getSource() == btnAddTask ) {
 
         	if(txtDay.getText().equals("") ||  txtMonth.getText().equals("") || Integer.parseInt(txtDay.getText())>31  || Integer.parseInt(txtMonth.getText()) > 12) {
-        		ta.setText("Error: Enter valid day and month!");
+        		taDescription.setText("Error: Enter valid day and month!");
         		}
         	else {
         	 
-        	if(!txtTaskName.getText().equals("")) {
-        		int cBox=0;
-        		if(cbImportant.isSelected()){cBox=1;}
-        		
-        		conn.insertQuery("INSERT INTO Tasks VALUES ('"+txtTaskName.getText()+"','"+txtDay.getText()+"','"+txtMonth.getText()+"','"+ta.getText()+"',"+cBox+","+key+")");
-        		txtTaskName.setText("");
-            	txtDay.setText("");
-            	txtMonth.setText("");
-            	ta.setText("");
-            	cbImportant.setSelected(false);
-        		CNTPane.setVisible(false);
-        	}   
-        	else {
-    			ta.setText("Error: Must enter task name!");
-    		}
+	        	if(!txtTaskName.getText().equals("")) {
+	        		int cBox=0;
+	        		if(cbImportant.isSelected()){cBox=1;}
+	        		
+	        		conn.insertQuery("INSERT INTO Tasks VALUES ('"+txtTaskName.getText()+"','"+txtDay.getText()+"','"+txtMonth.getText()+"','"+taDescription.getText()+"',"+cBox+","+key+")");
+	        		txtTaskName.setText("");
+	            	txtDay.setText("");
+	            	txtMonth.setText("");
+	            	taDescription.setText("");
+	            	cbImportant.setSelected(false);
+	        		CNTPane.setVisible(false);
+	        	}   
+        		else {
+    				taDescription.setText("Error: Must enter task name!");
+    			}
         	}
         }
         else {
         	txtTaskName.setText("");
         	txtDay.setText("");
         	txtMonth.setText("");
-        	ta.setText("");
+        	taDescription.setText("");
         	cbImportant.setSelected(false);
         	CNTPane.setVisible(false);
         }
@@ -213,6 +213,8 @@ public class Controller {
 		}	
 		rbImportance.setSelected(false);
 		rbDueDate.setSelected(false);
+		lblDescription.setTextFill(Color.web("black"));
+		lblDescription.setText("Select a taks to see its description.");
 		
 	}
 	
@@ -234,11 +236,11 @@ public class Controller {
 			
 			String d = ""+rs.getBoolean("Important")+"";
 			if(d.equals("true")) {
-				 lbDescription.setTextFill(Color.web("red"));
+				 lblDescription.setTextFill(Color.web("red"));
 				 description="Due "+months[Integer.parseInt(rs.getString("Month"))-1]+" "+rs.getString("day")+".\n"+rs.getString("Description")+"\n\nThis task is important.";
 			}
 			else {
-				 lbDescription.setTextFill(Color.web("black"));
+				 lblDescription.setTextFill(Color.web("black"));
 				 description="Due "+months[Integer.parseInt(rs.getString("Month"))-1]+" "+rs.getString("day")+".\n"+rs.getString("Description");
 			}
 			
@@ -246,7 +248,7 @@ public class Controller {
 			
 		}
 		
-		lbDescription.setText(description);
+		lblDescription.setText(description);
 		
 	}
 	
